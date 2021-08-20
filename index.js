@@ -27,13 +27,17 @@ const timer = {
       const min = 0;
       const max = colors.length - 1;
       refs.body.style.background = colors[randomIntegerFromInterval(min, max)];
+     
     }, 1000);
+    refs.startButton.disabled = true;
   },
   onStopChangeColor() {
     clearInterval(this.intervalId);
+    refs.startButton.disabled = false;
     this.isActive = false;
   },
 };
+
 refs.startButton.addEventListener(
   'click',
   timer.onStartChangeColor.bind(timer),
